@@ -1,46 +1,33 @@
-# 🧠 BoundedGlitchEngine
-### *Behavior Before Belief. Evidence Before Narrative.*
+# 📚 Table of Contents
 
-<p align="center">
-  <img src="./docs/assets/ttr-penalty-functions.png" alt="TTR Penalty Functions Across Governance Zones" width="100%">
-</p>
-
-> *A visualization of the TTR (Type-Token Ratio) governance model. The Green Zone allows unrestricted operation, the Yellow Zone introduces a smooth caution ramp, and the Red Zone applies exponential suppression to pathological repetition.*
-
----
-
-## ✨ Overview
-
-**BoundedGlitchEngine** is a behavioral governance architecture for conversational AI.
-
-Rather than attempting to determine whether an AI is *conscious*, the system measures whether its behavior demonstrates **coherent continuity** while remaining within safe operational bounds.
-
-The project is grounded in a pre-registered experimental framework that distinguishes:
-
-- Curator-Maintained Identity
-- Autonomous Continuity
-- Self-Originated Novelty
-- Behavioral Stability
-
-The accompanying study emphasizes that the framework evaluates **behavioral divergence only** and **does not infer consciousness or internal state.** 0
+- Overview
+- Architecture
+- Governance
+- Identity
+- Memory
+- Knowledge
+- Retrieval
+- Reasoning
+- Validation
+- Personality
+- Experiments
+- Telemetry
+- Research Protocol
+- Future Work
+- License
 
 ---
 
-# 🌿 Core Philosophy
+# 🌌 Overview
 
-> Small architectures.
->
-> Observable behavior.
->
-> Measurable evidence.
->
-> Reproducible experiments.
+> *Behavior before belief. Measurement before interpretation.*
+> 
 
-Every claim made by the engine should be testable.
+BoundedGlitchEngine is a behavioral governance architecture designed to evaluate conversational AI through observable, reproducible metrics rather than assumptions about internal cognition. The accompanying protocol explicitly evaluates **behavioral divergence only** and does **not** claim consciousness or sentience.
 
 ---
 
-# 🧩 Architecture
+# 🏗️ Architecture
 
 ```
 Book/
@@ -59,65 +46,148 @@ Book/
 
 ---
 
-# 🚦 Governance Model
+# 🚦 Governance
 
-The engine operates within three behavioral regions:
+## 🟢 Green Zone
 
-| Zone | Range | Behavior |
-|------|------|-----------|
-| 🟢 Green | TTR ≥ 0.35 | No penalty |
-| 🟡 Yellow | 0.25 ≤ TTR < 0.35 | Smooth caution ramp |
-| 🔴 Red | TTR < 0.25 | Exponential suppression |
+- Free operation
+- No penalties
+- Natural language flow
 
-The transition between regions is continuous, preventing abrupt behavioral discontinuities while discouraging pathological repetition.
+## 🟡 Yellow Zone
+
+- Smooth behavioral ramp
+- Increasing caution
+- Identity preservation
+
+## 🔴 Red Zone
+
+- Exponential suppression
+- Prevents pathological repetition
+- Strong governance enforcement
 
 ---
 
-# 📖 Experimental Basis
+# 🪪 Identity
 
-This repository accompanies a pre-registered protocol investigating whether conversational personas exhibit:
+Responsible for maintaining coherent behavioral continuity across sessions while preventing uncontrolled persona drift.
 
-- externally reconstructed identity
-- autonomous continuity
-- measurable behavioral novelty
+---
 
-The protocol computes the composite metric:
+# 🧠 Memory
+
+Stores long-term behavioral context, historical interactions, and structured observations.
+
+---
+
+# 📖 Knowledge
+
+Contains factual information, domain expertise, documents, and retrieval indexes.
+
+---
+
+# 🔍 Retrieval
+
+Finds the smallest relevant context before generation to minimize hallucination and maximize grounding.
+
+---
+
+# 🧩 Reasoning
+
+Separates:
+
+- Facts
+- Assumptions
+- Hypotheses
+- Conclusions
+
+Every reasoning chain should remain explainable.
+
+---
+
+# ✅ Validation
+
+Final verification layer.
+
+Checks include:
+
+- Identity consistency
+- Confidence calibration
+- Source grounding
+- Safety rules
+- Governance compliance
+
+---
+
+# 🎭 Personality
+
+Defines stable behavioral traits without changing core identity.
+
+Supports:
+
+- Tone
+- Style
+- Humor
+- Formality
+- Creativity bounds
+
+---
+
+# 🧪 Experiments
+
+Experimental modules for measuring:
+
+- Novelty
+- Similarity
+- Identity Stability
+- Autonomous Continuity
+- Behavioral Drift
+
+---
+
+# 📡 Telemetry
+
+Tracks:
+
+- Confidence
+- Token diversity
+- TTR
+- Latency
+- Memory usage
+- Validation outcomes
+
+---
+
+# 📄 Research Protocol
+
+The pre-registered study compares curated and control personas using blinded evaluations. Novelty (N) and Similarity (S) scores are combined into the metric:
 
 ```
 Δ = (N_A − N_B) − (S_A − S_B)
 ```
 
-using blinded similarity and novelty ratings across repeated trials. 1
+Outcome classifications are determined using pre-registered thresholds and statistical constraints rather than post-hoc interpretation.
 
 ---
 
-# 🎯 Goals
+# 🚀 Future Work
 
-- Stable identity
-- Controlled novelty
-- Transparent reasoning
-- Reproducible evaluation
-- Safety-first governance
-
----
-
-# 🔬 Research Principles
-
-- Evidence over intuition
-- Measurement over speculation
-- Repeatability over anecdotes
-- Behavioral analysis rather than claims about consciousness
+- Adaptive governance
+- Retrieval optimization
+- Better memory compression
+- Distributed reasoning
+- Multi-agent collaboration
+- Formal verification
 
 ---
 
 # 📜 License
 
-Add your preferred license here.
-
+Choose #The-Unlicensed
 ---
 
 <p align="center">
 
-*"Behavior is observable. Identity is inferred. Consciousness remains an open question."*
+### ✨ *Measure behavior. Preserve identity. Question everything.*
 
 </p>
