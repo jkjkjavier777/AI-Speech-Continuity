@@ -184,40 +184,33 @@ Tracks:
 
 ---
 ## 📁 Repository Structure
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Continuity Study Repository Structure</title>
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #f6f8fa;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        pre {
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .file-tree {
-            font-family: monospace;
-            white-space: pre;
-            color: #24292e;
-        }
-        .comment {
-            color: #6a737d;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-    <h1>AI Continuity Study Repository Structure</h1>
-    <pre class="file-tree">
+<title>AI Continuity Study Repository Structure</title>
+<style>
+  body {
+    font-family: 'Courier New', monospace;
+    background-color: #f6f8fa;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  pre {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  .file-tree {
+    font-family: monospace;
+    white-space: pre;
+    color: #24292e;
+  }
+  .comment {
+    color: #6a737d;
+    font-style: italic;
+  }
+</style>
+
+<pre class="file-tree">
 ai-continuity-study/
 │
 ├── README.md                  <span class="comment"># Study overview, goals, and setup</span>
@@ -252,9 +245,8 @@ ai-continuity-study/
 │
 └── assets/                   <span class="comment"># Static files (images, diagrams)</span>
     └── flowcharts/            <span class="comment"># Mermaid/SVG diagrams of methodology</span>
-    </pre>
-</body>
-</html>
+</pre>
+
 ---
 ## 🚀 Setup
 
