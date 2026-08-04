@@ -1,30 +1,4 @@
-<title>AI Continuity Study Repository Structure</title>
-<style>
-  body {
-    font-family: 'Courier New', monospace;
-    background-color: #f6f8fa;
-    padding: 20px;
-    line-height: 1.6;
-  }
-  pre {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-  }
-  .file-tree {
-    font-family: monospace;
-    white-space: pre;
-    color: #24292e;
-  }
-  .comment {
-    color: #6a737d;
-    font-style: italic;
-  }
-</style>
 
-<pre class="file-tree">
 ai-continuity-study/
 │
 ├── README.md                  <span class="comment"># Study overview, goals, and setup</span>
