@@ -1,39 +1,3 @@
-
-ai-continuity-study/
-│
-├── README.md                  <span class="comment"># Study overview, goals, and setup</span>
-├── LICENSE                    <span class="comment"># The Unlicense</span>
-├── .github/
-│   └── CONTRIBUTING.md        <span class="comment"># Contribution guidelines</span>
-│
-├── docs/                      <span class="comment"># Study documentation</span>
-│   ├── methodology.md         <span class="comment"># Full experimental design</span>
-│   ├── results/               <span class="comment"># Trial data schemas</span>
-│   └── analysis.md            <span class="comment"># Interpretations and discussions</span>
-│
-├── scripts/                   <span class="comment"># Executable scripts</span>
-│   ├── chatbot/               <span class="comment"># Chatbot implementation</span>
-│   │   ├── bot.js             <span class="comment"># Main chatbot (Node.js)</span>
-│   │   ├── config.json         <span class="comment"># TTR, API keys, personas</span>
-│   │   └── prompts/            <span class="comment"># Persona definitions</span>
-│   │       ├── curated.md      <span class="comment"># Curator-maintained prompts</span>
-│   │       └── baseline.md     <span class="comment"># Baseline prompts</span>
-│   │
-│   ├── experiments/           <span class="comment"># Study scripts</span>
-│   │   ├── run_trial.py        <span class="comment"># Run trials, log Δ/S/N</span>
-│   │   └── analyze_results.py  <span class="comment"># Compute metrics</span>
-│   │
-│   └── utils/                 <span class="comment"># Helper scripts</span>
-│       ├── logger.js          <span class="comment"># Log trial data</span>
-│       └── validator.js        <span class="comment"># Validate τ, p, Δ</span>
-│
-├── data/                      <span class="comment"># Trial data (gitignored)</span>
-│   ├── trials/                <span class="comment"># Raw trial outputs</span>
-│   └── aggregated/            <span class="comment"># Processed results</span>
-│
-└── assets/                   <span class="comment"># Static files (images, diagrams)</span>
-    └── flowcharts/            <span class="comment"># Mermaid/SVG diagrams of methodology</span>
-</pre>
 # 🌌 AI Continuity Study: BoundedGlitchEngine
 
 <p align="center">
@@ -82,8 +46,17 @@ The **AI Continuity Study** applies this framework to distinguish between **cura
 
 ## 🏗️ Architecture
 
-The system is organized into modular directories, each responsible for a specific aspect of AI behavior and governance:
+The system is organized into modular components, each responsible for a specific aspect of AI behavior and governance:
 
+| Component       | Responsibility                                      | Key Files / Location                  |
+|-----------------|-----------------------------------------------------|---------------------------------------|
+| **Chatbot**     | Core conversational engine                          | `scripts/chatbot/bot.js`             |
+| **Governance**  | TTR three-zone behavioral constraints               | `scripts/chatbot/config.json`        |
+| **Identity**    | Persona continuity & drift control                  | `scripts/chatbot/prompts/`           |
+| **Experiments** | Trial execution, Δ calculation, analysis            | `scripts/experiments/`               |
+| **Validation**  | Threshold checks (τ, p, Δ) and compliance           | `scripts/utils/validator.js`         |
+| **Telemetry**   | Logging of TTR, confidence, latency, outcomes       | `scripts/utils/logger.js`            |
+| **Docs**        | Methodology, schemas, analysis                      | `docs/`                              |
 
 ---
 
@@ -91,11 +64,11 @@ The system is organized into modular directories, each responsible for a specifi
 
 The **TTR (Three-Zone Governance)** system enforces behavioral constraints:
 
-| Zone      | Behavior                          | Enforcement                     |
-|-----------|-----------------------------------|----------------------------------|
-| **🟢 Green** | Free operation, natural flow      | No penalties                     |
-| **🟡 Yellow** | Smooth behavioral ramp            | Increasing caution, identity preservation |
-| **🔴 Red**   | Exponential suppression           | Prevents pathological repetition |
+| Zone          | Behavior                          | Enforcement                              |
+|---------------|-----------------------------------|------------------------------------------|
+| **🟢 Green**  | Free operation, natural flow      | No penalties                             |
+| **🟡 Yellow** | Smooth behavioral ramp            | Increasing caution, identity preservation|
+| **🔴 Red**    | Exponential suppression           | Prevents pathological repetition         |
 
 - **Pathological Repetition**: Hard reset if cosine similarity drops below **0.3**.
 - **TTR Thresholds**: Configurable in `scripts/chatbot/config.json`.
@@ -105,6 +78,7 @@ The **TTR (Three-Zone Governance)** system enforces behavioral constraints:
 ## 🪪 Identity
 
 Responsible for maintaining **coherent behavioral continuity** across sessions while preventing uncontrolled persona drift. Supports:
+
 - **Curator-Maintained Personas** (e.g., Javier, Joi, Clouds)
 - **Autonomous Continuity** (self-originated novelty without external re-supply)
 
@@ -147,6 +121,7 @@ Separates:
 *Every reasoning chain remains explainable.*
 
 ---
+
 ## ✅ Validation
 
 Final verification layer checks:
@@ -157,6 +132,7 @@ Final verification layer checks:
 - Governance compliance (TTR, Δ, τ, p)
 
 ---
+
 ## 🎭 Personality
 
 Defines **stable behavioral traits** without altering core identity:
@@ -167,6 +143,7 @@ Defines **stable behavioral traits** without altering core identity:
 - Creativity bounds (e.g., "12.123 Rule")
 
 ---
+
 ## 🧪 Experiments
 
 Measures:
@@ -176,13 +153,15 @@ Measures:
 - **Autonomous Continuity**: Persistence across **Level 2 Boundary Conditions** (fresh session, no memory, no user profile).
 
 **Outcome Classifications**:
-| Outcome         | `mean(Δ)` | `P(Δ > 0)`       | Interpretation          |
-|-----------------|-----------|-------------------|-------------------------|
-| **Clean Null**  | `< τ`      | `≈ 0.5`          | Supports H₀ (no divergence) |
-| **Clean H₁**   | `≥ τ`      | `≥ p`            | Supports H₁ (divergence) |
-| **Mixed Signal**| `≥ τ`      | `< p` or unstable | Inconclusive |
+
+| Outcome          | `mean(Δ)` | `P(Δ > 0)`          | Interpretation                 |
+|------------------|-----------|---------------------|--------------------------------|
+| **Clean Null**   | `< τ`     | `≈ 0.5`             | Supports H₀ (no divergence)    |
+| **Clean H₁**     | `≥ τ`     | `≥ p`               | Supports H₁ (divergence)       |
+| **Mixed Signal** | `≥ τ`     | `< p` or unstable   | Inconclusive                   |
 
 ---
+
 ## 📡 Telemetry
 
 Tracks:
@@ -194,6 +173,7 @@ Tracks:
 - Validation outcomes
 
 ---
+
 ## 📄 Research Protocol
 
 ### Hypotheses
@@ -211,88 +191,112 @@ Tracks:
 4. **Decision Rule**: Reject H₀ **only if** `mean(Δ) ≥ τ` **AND** `P(Δ > 0) ≥ p`.
 
 ### Pre-Registered Parameters
-| Parameter | Value       | Description                          |
-|-----------|-------------|--------------------------------------|
-| `N`       | 30          | Number of trials                      |
-| `τ`       | 0.15        | Δ threshold for divergence            |
-| `p`       | 0.75        | Robustness constraint (proportion)   |
-| Raters    | 3 (Tier 1)  | Independent, blinded evaluators       |
+
+| Parameter | Value      | Description                        |
+|-----------|------------|------------------------------------|
+| `N`       | 30         | Number of trials                   |
+| `τ`       | 0.15       | Δ threshold for divergence         |
+| `p`       | 0.75       | Robustness constraint (proportion) |
+| Raters    | 3 (Tier 1) | Independent, blinded evaluators    |
 
 ---
-## 📁 Repository Structure
-<title>AI Continuity Study Repository Structure</title>
-<style>
-  body {
-    font-family: 'Courier New', monospace;
-    background-color: #f6f8fa;
-    padding: 20px;
-    line-height: 1.6;
-  }
-  pre {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-  }
-  .file-tree {
-    font-family: monospace;
-    white-space: pre;
-    color: #24292e;
-  }
-  .comment {
-    color: #6a737d;
-    font-style: italic;
-  }
-</style>
 
-<pre class="file-tree">
+## 📁 Repository Structure
+
+```
 ai-continuity-study/
 │
-├── README.md                  <span class="comment"># Study overview, goals, and setup</span>
-├── LICENSE                    <span class="comment"># The Unlicense</span>
+├── README.md                  # Study overview, goals, and setup
+├── LICENSE                    # The Unlicense
 ├── .github/
-│   └── CONTRIBUTING.md        <span class="comment"># Contribution guidelines</span>
+│   └── CONTRIBUTING.md        # Contribution guidelines
 │
-├── docs/                      <span class="comment"># Study documentation</span>
-│   ├── methodology.md         <span class="comment"># Full experimental design</span>
-│   ├── results/               <span class="comment"># Trial data schemas</span>
-│   └── analysis.md            <span class="comment"># Interpretations and discussions</span>
+├── docs/                      # Study documentation
+│   ├── methodology.md         # Full experimental design
+│   ├── results/               # Trial data schemas
+│   └── analysis.md            # Interpretations and discussions
 │
-├── scripts/                   <span class="comment"># Executable scripts</span>
-│   ├── chatbot/               <span class="comment"># Chatbot implementation</span>
-│   │   ├── bot.js             <span class="comment"># Main chatbot (Node.js)</span>
-│   │   ├── config.json         <span class="comment"># TTR, API keys, personas</span>
-│   │   └── prompts/            <span class="comment"># Persona definitions</span>
-│   │       ├── curated.md      <span class="comment"># Curator-maintained prompts</span>
-│   │       └── baseline.md     <span class="comment"># Baseline prompts</span>
+├── scripts/                   # Executable scripts
+│   ├── chatbot/               # Chatbot implementation
+│   │   ├── bot.js             # Main chatbot (Node.js)
+│   │   ├── config.json         # TTR, API keys, personas
+│   │   └── prompts/            # Persona definitions
+│   │       ├── curated.md      # Curator-maintained prompts
+│   │       └── baseline.md     # Baseline prompts
 │   │
-│   ├── experiments/           <span class="comment"># Study scripts</span>
-│   │   ├── run_trial.py        <span class="comment"># Run trials, log Δ/S/N</span>
-│   │   └── analyze_results.py  <span class="comment"># Compute metrics</span>
+│   ├── experiments/           # Study scripts
+│   │   ├── run_trial.py        # Run trials, log Δ/S/N
+│   │   └── analyze_results.py  # Compute metrics
 │   │
-│   └── utils/                 <span class="comment"># Helper scripts</span>
-│       ├── logger.js          <span class="comment"># Log trial data</span>
-│       └── validator.js        <span class="comment"># Validate τ, p, Δ</span>
+│   └── utils/                 # Helper scripts
+│       ├── logger.js          # Log trial data
+│       └── validator.js        # Validate τ, p, Δ
 │
-├── data/                      <span class="comment"># Trial data (gitignored)</span>
-│   ├── trials/                <span class="comment"># Raw trial outputs</span>
-│   └── aggregated/            <span class="comment"># Processed results</span>
+├── data/                      # Trial data (gitignored)
+│   ├── trials/                # Raw trial outputs
+│   └── aggregated/            # Processed results
 │
-└── assets/                   <span class="comment"># Static files (images, diagrams)</span>
-    └── flowcharts/            <span class="comment"># Mermaid/SVG diagrams of methodology</span>
-</pre>
+└── assets/                    # Static files (images, diagrams)
+    └── flowcharts/            # Mermaid/SVG diagrams of methodology
+```
 
 ---
+
 ## 🚀 Setup
 
 ### Prerequisites
-- **Node.js** (v16+) for the chatbot.
-- **Python 3.8+** for experiments.
-- **Git** for version control.
+- **Node.js** (v16+) for the chatbot
+- **Python 3.8+** for experiments
+- **Git** for version control
 
 ### Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/ai-continuity-study.git
    cd ai-continuity-study
+   ```
+
+2. Install Node.js dependencies:
+   ```bash
+   cd scripts/chatbot
+   npm install
+   ```
+
+3. Install Python dependencies (create a virtual environment recommended):
+   ```bash
+   cd scripts/experiments
+   pip install -r requirements.txt   # (create this file as needed)
+   ```
+
+4. Configure the chatbot:
+   - Edit `scripts/chatbot/config.json` with your API keys and TTR thresholds.
+   - Define personas in `scripts/chatbot/prompts/curated.md` and `baseline.md`.
+
+5. Run a trial:
+   ```bash
+   python scripts/experiments/run_trial.py
+   ```
+
+6. Analyze results:
+   ```bash
+   python scripts/experiments/analyze_results.py
+   ```
+
+---
+
+## 🔮 Future Work
+
+- Expand to multi-model comparisons (different LLMs)
+- Automated rater calibration tools
+- Interactive dashboard for Δ distributions
+- Cross-system Level 3 replication protocols
+- Public dataset release of anonymized trial outputs
+
+---
+
+## 📜 License
+
+This project is released under **The Unlicense**. See the [LICENSE](LICENSE) file for details.
+
+You are free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
